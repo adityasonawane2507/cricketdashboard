@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Paglu</title>
+
+  <style>
+    /* ====== Base Reset ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url("https://wallpapercave.com/wp/wp8754300.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+      padding-bottom: 60px;
+      position: relative;
+      z-index: 0;
+    }
+
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: -1;
+    }
+
+    /* ====== Header ====== */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 50px;
+      background: rgba(0, 119, 182, 0.9);
+      color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 15px 15px;
+    }
+
+    .top-header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    /* ====== Headings ====== */
+    h1, h2, h3 {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 2.4rem;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      color: #caf0f8;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    h3 {
+      color: #e0f7fa;
+      margin-top: 15px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    /* ====== Player List ====== */
+    ol {
+      width: fit-content;
+      margin: 20px auto;
+      text-align: left;
+    }
+
+    ol li {
+      background: rgba(202, 240, 248, 0.9);
+      border: 1px solid #90e0ef;
+      border-radius: 8px;
+      padding: 8px 20px;
+      margin: 6px 0;
+      transition: 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    ol li:hover {
+      background: #90e0ef;
+      transform: scale(1.03);
+    }
+
+    /* ====== Table ====== */
+    table {
+      border-collapse: collapse;
+      margin: 30px auto;
+      width: 80%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ade8f4;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #caf0f8;
+    }
+
+    th {
+      background-color: #0096c7;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    tr:hover {
+      background-color: #e0f7fa;
+    }
+
+    a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #03045e;
+      text-decoration: underline;
+    }
+
+    /* ====== Image Grid (2x2 Layout) ====== */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      width: 85%;
+      margin: 40px auto;
+      justify-items: center;
+    }
+
+    .image-grid a {
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .image-grid a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 119, 182, 0.3);
+    }
+
+    .image-grid img {
+      width: 100%;
+      max-width: 500px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ====== Cricket Info Section ====== */
+    .info-section {
+      width: 85%;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      line-height: 1.7;
+      backdrop-filter: blur(5px);
+    }
+
+    .info-section h2 {
+      text-align: center;
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+
+    .info-topic {
+      margin-bottom: 25px;
+    }
+
+    .info-topic h3 {
+      color: #023e8a;
+      margin-bottom: 10px;
+    }
+
+    .info-topic ul {
+      margin-left: 25px;
+      list-style-type: square;
+      color: #333;
+    }
+
+    /* ====== Scrollbar ====== */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #90e0ef;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #e0f7fa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-header">
+    <h2>ICC</h2>
+    <h2>BCCI</h2>
+  </div>
+
+  <h1>Cricket Record</h1>
+  <h2>Favorite Cricket Player</h2>
+
+  <h3>Player's</h3>
+  <ol>
+    <li>M S Dhoni</li>
+    <li>Virat Kohli</li>
+    <li>Rohit Sharma</li>
+    <li>Rishabh Pant</li>
+  </ol>
+
+  <h3>Record of Players</h3>
+  <table>
+    <tr>
+      <th>Player Name</th>
+      <th>Matches Played (All Format)</th>
+      <th>Nick Name</th>
+      <th>Wikipedia</th>
+    </tr>
+    <tr>
+      <td>M S Dhoni</td>
+      <td>538</td>
+      <td>Mahi</td>
+      <td><a href="https://en.wikipedia.org/wiki/MS_Dhoni" target="_blank">Info</a></td>
+    </tr>
+    <tr>
+      <td>Virat Kohli</td>
+      <td>550</td>
+      <td>King</td>
+      <td><a href="https://en.wikipedia.org/wiki/Virat_Kohli" target="_blank">Info</a></td>
+    </tr>
+    <tr>
+      <td>Rohit Sharma</td>
+      <td>535</td>
+      <td>Shana</td>
+      <td><a href="https://en.wikipedia.org/wiki/Rohit_Sharma" target="_blank">Info</a></td>
+    </tr>
+    <tr>
+      <td>Rishabh Pant</td>
+      <td>320</td>
+      <td>Spiderman</td>
+      <td><a href="https://en.wikipedia.org/wiki/Rishabh_Pant" target="_blank">Info</a></td>
+    </tr>
+  </table>
+
+  <!-- ====== 2x2 Image Grid (Clickable) ====== -->
+  <div class="image-grid">
+    <a href="https://www.instagram.com/mahi7781/" target="_blank">
+      <img src="https://c.ndtvimg.com/2021-11/o66r0bb8_ms-dhoni-ipl_625x300_20_November_21.jpg?im=FeatureCrop,algorithm=dnn,width=806,height=605" alt="MS Dhoni">
+    </a>
+
+    <a href="https://www.instagram.com/virat.kohli/" target="_blank">
+      <img src="https://www.deccanchronicle.com/h-upload/2025/07/16/1938706-gv-dmoxkaaz9is.webp" alt="Virat Kohli">
+    </a>
+
+    <a href="https://www.instagram.com/rohitsharma45/" target="_blank">
+      <img src="https://static.toiimg.com/thumb/msid-113209976,width-1280,height-720,resizemode-4/113209976.jpg" alt="Rohit Sharma">
+    </a>
+
+    <a href="https://www.instagram.com/rishabpant/" target="_blank">
+      <img src="https://i0.wp.com/crictoday.com/wp-content/uploads/2022/11/RishabhPant-cropped_0-scaled.jpg?fit=2000%2C1125&ssl=1" alt="Rishabh Pant">
+    </a>
+  </div>
+
+  <!-- ====== Cricket Information Section ====== -->
+  <div class="info-section">
+    <h2>Information About Cricket</h2>
+
+    <div class="info-topic">
+      <h3>🏏 1. Introduction</h3>
+      <ul>
+        <li>Cricket is a bat-and-ball game played between two teams of 11 players each.</li>
+        <li>It originated in England and is now one of the most popular sports globally.</li>
+        <li>It is governed internationally by the International Cricket Council (ICC).</li>
+      </ul>
+    </div>
+
+    <div class="info-topic">
+      <h3>🌍 2. Formats of the Game</h3>
+      <ul>
+        <li><strong>Test Cricket:</strong> Played over five days with two innings per team.</li>
+        <li><strong>One Day Internationals (ODI):</strong> Each team faces 50 overs.</li>
+        <li><strong>T20 Internationals:</strong> Each team faces 20 overs; fastest format.</li>
+      </ul>
+    </div>
+
+    <div class="info-topic">
+      <h3>🏆 3. Major Cricket Tournaments</h3>
+      <ul>
+        <li>ICC Cricket World Cup</li>
+        <li>ICC T20 World Cup</li>
+        <li>Indian Premier League (IPL)</li>
+        <li>The Ashes Series (England vs Australia)</li>
+      </ul>
+    </div>
+
+    <div class="info-topic">
+      <h3>👕 4. Equipment Used</h3>
+      <ul>
+        <li>Bat, Ball, Stumps, and Bails</li>
+        <li>Protective Gear: Helmet, Pads, Gloves, and Guard</li>
+        <li>Uniform: Each team wears its own colored jersey</li>
+      </ul>
+    </div>
+
+    <div class="info-topic">
+      <h3>⭐ 5. Famous Indian Cricketers</h3>
+      <ul>
+        <li>Sachin Tendulkar – “The God of Cricket”</li>
+        <li>MS Dhoni – Known for calm captaincy and finishing skills</li>
+        <li>Virat Kohli – Fitness icon and aggressive batsman</li>
+        <li>Rohit Sharma – Known for multiple double centuries in ODIs</li>
+      </ul>
+    </div>
+
+    <div class="info-topic">
+      <h3>📈 6. Importance of Cricket</h3>
+      <ul>
+        <li>Promotes teamwork and discipline.</li>
+        <li>Improves physical fitness and coordination.</li>
+        <li>Brings nations together through sportsmanship.</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
